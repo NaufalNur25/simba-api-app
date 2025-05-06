@@ -14,4 +14,4 @@ RUN go mod tidy && go build -o api .
 EXPOSE 8080
 
 # Jalankan aplikasi
-CMD ["./api"]
+CMD ["./main"]
