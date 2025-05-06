@@ -1,16 +1,25 @@
 # Gunakan base image Go
-FROM golang:latest AS builder
+FROM FROM golang:latest AS builder
 
-# Tentukan direktori kerja
+# Install git dan lainnya (kalau perlu)
+RUN apk add --no-cache git
+
+# Set working directory
 WORKDIR /app
 
-# Salin file Go yang diperlukan ke dalam image
+# Copy go mod dan go sum
+COPY go.mod go.sum ./
+
+# Download dependencies
+RUN go mod download
+
+# Copy semua file project ke dalam container
 COPY . .
 
-# Bangun aplikasi Go
-RUN go mod tidy && go build -o api .
+# Build binary-nya
+RUN go build -o main .
 
-# Tentukan port yang digunakan oleh aplikasi
+# Expose port (disesuaikan dengan yang kamu pakai di Gin)
 EXPOSE 8080
 
 # Jalankan aplikasi
