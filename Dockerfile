@@ -1,9 +1,6 @@
 # Gunakan base image Go
 FROM FROM golang:latest AS builder
 
-# Install git dan lainnya (kalau perlu)
-RUN apk add --no-cache git
-
 # Set working directory
 WORKDIR /app
 
