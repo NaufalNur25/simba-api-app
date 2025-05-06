@@ -22,4 +22,4 @@ services:
 
 networks:
   simba-network:
-    external: true
+    driver: bridge
