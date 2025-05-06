@@ -1,5 +1,5 @@
 # Gunakan base image Go
-FROM golang:1.21-alpine
+FROM FROM golang:latest AS builder
 
 # Install git dan lainnya (kalau perlu)
 RUN apk add --no-cache git
